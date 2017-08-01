@@ -51,8 +51,20 @@ class TestHangman < Minitest::Test
 	end
 
 	def test_assert_x_is_put_in_the_wrong_array
-	secret_word = "fox"
-	guess = "w"
-	assert_equal(false, in_word?(secret_word, guess))
+		secret_word = "fox"
+		guess = "w"
+		assert_equal(false, in_word?(secret_word, guess))
+	end
+
+	def test_assert_o_is_found_in_the_answer_array
+		secret_word = "foobar"
+		guess = "o"
+		assert_equal(true, determine_position(secret_word, guess))
+	end
+
+	def test_assert_z_is_not_found_in_the_answer_array
+		secret_word = "foobar"
+		guess = "z"
+		assert_equal(false, determine_position(secret_word, guess))
 	end
 end
