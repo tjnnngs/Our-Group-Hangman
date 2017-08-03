@@ -3,20 +3,23 @@
 
 def get_players()
 	p "Enter the number of players (one OR two)"
-	players = gets.chomp
+	$players = gets.chomp
+end
+
+def get_secret_word(players)
 	if players == "two"
-		get_secret_word()
+		input_secret_word()
 	else
-		generate_secret_word()
+		pick_secret_word()
 	end
 end
 
-def get_secret_word()
+def input_secret_word()
 	p "Player 1 - enter the secret word"
 	$secret_word_array = gets.scan(/./)
 end
 
-def generate_secret_word()
+def pick_secret_word()
 	#creates an array of a secret words to choose from
 	wordbank = ["foobar", "tapioca", "wombat", "skylight", "lizard", "fox"]
 	#randomly chooses a word from thr wordbank for the game
@@ -77,6 +80,7 @@ end
 
 def run_program()
 	get_players()
+	get_secret_word($players)
 	display_blanks($secret_word_array)
 	create_letterbox_hash()
 	$solved = false
