@@ -43,7 +43,7 @@ def guess_a_letter(secret_word_array, my_guess_array, alphabet, wrong_guesses, w
 	found = false
 	guess = gets.chomp
 	if $all_letters.include?(guess)
-		puts "You already guessed #{$guess}. Try again!"
+		puts "You already guessed #{guess}. Try again!"
 	else
 		$secret_word_array.each do |letter|
 			if letter == guess
@@ -58,10 +58,9 @@ def guess_a_letter(secret_word_array, my_guess_array, alphabet, wrong_guesses, w
 			$wrong_letters << guess
 			$wrong_letters = $wrong_letters.sort
 			puts "Letter not found; wrong guesses = #{$wrong_guesses} including #{$wrong_letters}"
-		end
+		end	
+		$all_letters << guess
 	end
-	$all_letters.push $guess
-	p "all letters = #{$all_letters}"
 end	
 def you_lose(wrong_guesses, secret_word_array)
 	if $wrong_guesses == 10
